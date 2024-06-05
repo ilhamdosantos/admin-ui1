@@ -1,10 +1,8 @@
-import React from 'react';
 import "./chart.scss";
 import {
   AreaChart,
   Area,
   XAxis,
-  YAxis,
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
