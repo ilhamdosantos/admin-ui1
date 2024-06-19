@@ -8,7 +8,7 @@ import Datatable from '../../components/datatable/Datatable';
 import { useLocation } from 'react-router-dom';
 
 const Single = ({columns}) => {
-  const location = useLocation;
+  const location = useLocation();
   const id = location.pathname.split('/')[2];
 
   return (
