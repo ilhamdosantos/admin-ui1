@@ -39,7 +39,7 @@ const Widget = ({ type }) => {
         title: "ORDERS",
         isMoney: false,
         link: "View all orders",
-        query: "orders",
+        query: "users",
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"
@@ -56,7 +56,7 @@ const Widget = ({ type }) => {
         title: "EARNINGS",
         isMoney: true,
         link: "View net earnings",
-        query: "earnings",
+        query: "users",
         icon: (
           <MonetizationOnOutlinedIcon
             className="icon"
@@ -70,7 +70,7 @@ const Widget = ({ type }) => {
         title: "BALANCE",
         isMoney: true,
         link: "See details",
-        query: "balance",
+        query: "users",
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"
@@ -104,29 +104,20 @@ const Widget = ({ type }) => {
       );
 
       const lastMonthData = await getDocs(lastMonthQuery);
-      const prevMonthData = await getDocs(prevMonthQuery);
+      const prevMonthData = await getDocs(prevMonthQuery); 
 
-      if (data.isMoney) {
-        const lastMonthAmount = lastMonthData.docs.reduce((sum, doc) => sum + (doc.data().amount || 0), 0);
-        const prevMonthAmount = prevMonthData.docs.reduce((sum, doc) => sum + (doc.data().amount || 0), 0);
+      setAmount(lastMonthData.docs.length);
+      setDiff(100);
 
-        setAmount(lastMonthAmount);
+      if(prevMonthData.docs.length > 0){
         setDiff(
-          prevMonthAmount > 0
-            ? ((lastMonthAmount - prevMonthAmount) / prevMonthAmount) * 100
-            : 100
+          ((lastMonthData.docs.length - prevMonthData.docs.length) / prevMonthData.docs.length) *
+            100
         );
-      } else {
-        setAmount(lastMonthData.docs.length);
-        setDiff(
-          prevMonthData.docs.length > 0
-            ? ((lastMonthData.docs.length - prevMonthData.docs.length) / prevMonthData.docs.length) * 100
-            : 100
-        );
-      }
+      } 
     };
     fetchData();
-  }, [type]);
+  }, []);
 
   return (
     <div className="widget">
