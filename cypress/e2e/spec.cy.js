@@ -7,7 +7,7 @@ describe('template spec', () => {
     cy.get('input#email')
       .should('be.visible')
       .should('have.attr', 'placeholder', 'Enter your email')
-      .type('ilham@santoso.com').should('have.value', 'ilham@santoso.com')
+      .type('admin@store.com').should('have.value', 'admin@store.com')
 
     cy.get('input#password')
       .should('be.visible')

@@ -1,9 +1,11 @@
+import React from "react";
 import "./mydatatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
+import { Link } from "react-router-dom";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
-  { field: "name", headerName: "Name", width: 130 },
+  { field: "firstName", headerName: "First name", width: 130 },
 ];
 
 const rows = [
@@ -21,8 +23,8 @@ const rows = [
 
 const MyDatatable = ({ title }) => {
   return (
-    <div className="myDatatable">
-      <div className="myDatatableTitle">{title}</div>
+    <div className="datatable">
+      <div className="datatableTitle">{title}</div>
       <DataGrid
         rows={rows}
         columns={columns}
