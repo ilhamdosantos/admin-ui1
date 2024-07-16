@@ -26,6 +26,6 @@ describe('template spec', () => {
         
         cy.url().should('include', '/users')
         
-        cy.get('div.datatableTitle').contains('USERS')
+        cy.get('div.datatableTitle').contains('USER')
   })
 })
