@@ -36,10 +36,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <div className="top">
         <Link to="/">
-          <span className="logo" id="logo2">
-            Awikwok
-          </span>
-          <span className="logo">Store</span>
+          <span className="logo">Dosantos Store</span>
         </Link>
       </div>
       <hr />
