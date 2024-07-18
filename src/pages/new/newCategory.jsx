@@ -50,7 +50,11 @@ const NewCategory = ({ inputs, title }) => {
                   <input type={input.type} placeholder={input.placeholder} id={input.id} onChange={handleInput} />
                 </div>
               ))}
-              <button>Send</button>
+              <button>
+                <li data-testid="submit">
+                Submit
+                </li>
+                </button>
             </form>
           </div>
         </div>

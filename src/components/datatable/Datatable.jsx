@@ -58,7 +58,6 @@ const Datatable = ({ columns = [] }) => {
         return (
           <div className="cellAction">
             <Link to={"/" + type + "/" + params.row.id} style={{ textDecoration: "none" }}>
-              <span className="viewButton">View</span>
             </Link>
             <span>
               <span
@@ -80,7 +79,9 @@ const Datatable = ({ columns = [] }) => {
       {type ? type.toUpperCase() : "DATA"}
         {type && (
           <Link to={`/${type}/new`} className="link">
+            <li data-testid="link">
             Add New
+            </li>
           </Link>
         )}
   </div>

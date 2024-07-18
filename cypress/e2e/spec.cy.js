@@ -28,5 +28,31 @@ describe('template spec', () => {
 
         cy.get('div.datatableTitle').contains('CATEGORIES')
 
+        cy.get('[data-testid="link"]').click()
+
+    cy.url().should('include', '/categories/new')
+
+    cy.get('input#name')
+    .type('Appetizer')
+
+    cy.get('[data-testid="submit"]').click()
+
+    cy.get('.MuiDataGrid-virtualScrollerRenderZone').should('be.visible');
+
+    // Temukan baris dengan data 'Appetizer'
+    cy.contains('.MuiDataGrid-row', 'Appetizer').as('appetizerRow');
+
+    // Pastikan baris 'Appetizer' ada di dalam tabel
+    cy.get('@appetizerRow').should('exist');
+
+    // Klik tombol Delete pada baris 'Appetizer'
+    cy.get('@appetizerRow').within(() => {
+      cy.get('.deleteButton').click();
+    });
+
+    // Verifikasi bahwa baris 'Appetizer' tidak lagi ada di dalam tabel
+    cy.contains('.MuiDataGrid-row', 'Appetizer').should('not.exist');
+
+
   })
 })
