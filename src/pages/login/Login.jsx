@@ -5,6 +5,8 @@ import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { DarkModeContext } from "../../context/darkModeContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 const Login = () => { 
   const [error, setError] = useState(false);
@@ -12,7 +14,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const {dispatch} = useContext (AuthContext);
+  const { dispatch } = useContext(AuthContext);
   const { darkMode, dispatch: darkModeDispatch } = useContext(DarkModeContext);
 
   const handleLogin = (e) => {
@@ -22,8 +24,8 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user; 
-        dispatch ({type : "LOGIN", payload:user});
-        navitage("/");
+        dispatch({ type: "LOGIN", payload: user });
+        navigate("/");
         console.log(user);
       })
       .catch((error) => {
@@ -36,7 +38,6 @@ const Login = () => {
       <form data-testid="form" onSubmit={handleLogin}>
         <input
           id="email"
-
           placeholder="Enter your email" 
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -50,7 +51,7 @@ const Login = () => {
         {error && <span>Wrong email or password!</span>}
 
         <div className="theme-toggle" onClick={() => darkModeDispatch({ type: "TOGGLE" })}>
-          {darkMode ? "🌞" : "🌜"}
+          <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
         </div>
       </form>
     </div>
