@@ -61,9 +61,8 @@ const Datatable = ({ columns = [] }) => {
             </Link>
             <span>
               <span
-                className="deleteButton"
-                onClick={() => handleDelete(params.row.id)}
-              >
+                className="deleteButton"onClick={() => handleDelete(params.row.id)}
+                >
                 Delete
               </span>
             </span>
@@ -80,7 +79,7 @@ const Datatable = ({ columns = [] }) => {
         {type && (
           <Link to={`/${type}/new`} className="link">
             <li data-testid="link">
-            Add New
+          Add New
             </li>
           </Link>
         )}
